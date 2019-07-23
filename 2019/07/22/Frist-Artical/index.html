@@ -84,7 +84,7 @@
     <div class="row">
         <div class="col-md-8 offset-md-2 ">
             <div class="post-content py-5 z-depth-3 main">
-                <h3 id="题目十一"><a href="#题目十一" class="headerlink" title="题目十一"></a>题目十一</h3><p>古典问题：有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数为多少？<br>该题的关键在于兔子的数量符合<strong>斐波那契数列</strong>-即第n位数等于n-1位和n-2位数相加。同样是通过相互赋值的方法改变相加数的位置。<br>例如1+1=2视为x+y=z，下一次计算应该为1+2=3，则相当于把y值当成新的x，把z看成新的y<br>即x+y=z<br>    x+y=z<br>相关代码</p>
+                <h3 id="题目十一"><a href="#题目十一" class="headerlink" title="题目十一"></a>题目十一</h3><p><strong>有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数为多少？</strong><br>该题的关键在于兔子的数量符合<strong>斐波那契数列</strong>-即第n位数等于n-1位和n-2位数相加。同样是通过相互赋值的方法改变相加数的位置。<br>例如1+1=2视为x+y=z，下一次计算应该为1+2=3，则相当于把y值当成新的x，把z看成新的y<br>即x+y=z<br>    x+y=z<br>相关代码</p>
 <pre><code>printf(&quot;%d\n&quot;,y*2); &#x2F;&#x2F;打印出第一位数，乘二是因为一对兔子为两只
 for(i=0;i&lt;30;i++)
 {
@@ -93,9 +93,183 @@ for(i=0;i&lt;30;i++)
     x=y;
     y=z;
 }</code></pre>
-<p>插入图片测试</p>
-<img src="/2019/07/22/Frist-Artical/2.png" title="This is an example image">
-<p>参考文档：(<a href="https://www.jianshu.com/p/56d99a3049a5" target="_blank" rel="noopener">https://www.jianshu.com/p/56d99a3049a5</a>)<br>Sina博客原稿：(<a href="http://blog.sina.com.cn/u/2292464751" target="_blank" rel="noopener">http://blog.sina.com.cn/u/2292464751</a>)<br>测试结束</p>
+
+<h3 id="题目十二"><a href="#题目十二" class="headerlink" title="题目十二"></a>题目十二</h3><p><strong>判断101-200之间有多少个素数，并输出所有素数。</strong><br><strong>素数</strong>-指除了自身和1外，不能被其他数整除的数。主要是用两个for循环嵌套，首先循环查找的范围，然后循环查找的条件，查找条件比较简单，把被判断数从2除到201，每被整除就标记一次，不能被整除的就continue结束。除完之后查看标记的次数，根据素数的特性，凡是标记次数小于2的就输出概述，并另标记打印的次数(即说明找到了一个素数)。<br>相关代码</p>
+<pre><code>int a=101,b,c,e=0;
+for(;a&lt;201;a++)
+{
+    c=0; &#x2F;&#x2F;初始化整除标记为0；
+    for(b=2;b &lt; a+1 ;b++) &#x2F;&#x2F;*不检验被1整除，从2到a+1即可，若到a则测不到被自身整除*
+    {
+        if(a%b==0) &#x2F;&#x2F;查找整除
+            c++; &#x2F;&#x2F;每整除一次就标记+1
+        else
+            continue; &#x2F;&#x2F;不能被整除就结束循环
+    }
+    if(c&lt;2) &#x2F;&#x2F;当数只整除一次时进入
+    {
+        e++; &#x2F;&#x2F;素数标记+1
+        printf(&quot;%d\n&quot;,a);
+    }
+}
+printf(&quot;e=%d\n&quot;,e); &#x2F;&#x2F;素数标记打印要放在所有循环外面</code></pre>
+
+<h3 id="题目二十六"><a href="#题目二十六" class="headerlink" title="题目二十六"></a>题目二十六</h3><p><strong>利用递归方法求5!</strong><br>利用函数嵌套的递归算法，主要理清楚递归次数和值的关系，阶乘的关系如下<br>   函数递归的最终返回值<br>                 ↑ 值120返回<br>         【f(4) ×5】<br>             ↑ 值24返回<br>     【f(3) ×4】<br>         ↑ 值6返回<br>  【f(2)×3】<br>      ↑ 值2返回<br>【f(1)×2】<br>f(0)时返回1给f(1)；然后依次返回<br>相关代码</p>
+<pre><code>int fact(int x);&#x2F;&#x2F;使用函数前需要提前声明
+
+int main()
+{
+    int a,b;
+    scanf(&quot;%d&quot;,&amp;a);&#x2F;&#x2F;将程序升级成阶乘计算器，输入数a，并计算a的阶乘
+    b=fact(a);
+    printf(&quot;%d\n&quot;,b);
+    return 0;
+}
+
+int fact(int x)&#x2F;&#x2F;函数定义
+{
+    int y;
+    if(x&gt;0)
+    {
+        x--;&#x2F;&#x2F;需要在递归前先进行条件变换，不然会造成递归死循环
+        y=fact(x)\*(x+1);&#x2F;&#x2F;阶乘递归的关键，过程见上
+        return y;&#x2F;&#x2F;最后返回的y值
+    }
+    return 1;&#x2F;&#x2F;x==0时返回1值
+}</code></pre>
+
+<h3 id="题目四十一"><a href="#题目四十一" class="headerlink" title="题目四十一"></a>题目四十一</h3><p><strong>学习static定义静态变量的用法</strong><br>静态变量和普通的变量（即auto自动变量）的区别只有是否会自动释放内存。auto变量在函数调用结束的时候会自动释放，而static变量则不会释放，而是会一直存放在静态储存区，方便下次调用，适合类似求阶乘的算法，但这样的代价是内存得不到释放，同时降低了代码的可读性。<br>相关代码</p>
+<pre><code>int main()
+{
+    int i;
+    for(i=0;i&lt;3;i++)
+        varer();
+}
+
+void varer()
+{
+    int var=0;
+    static int static_var=0;
+    printf(&quot;var=%d\n&quot;,var);
+    printf(&quot;static_var=%d\n&quot;,static_var);
+    var++;
+    static_var++;
+}</code></pre>
+<p>程序执行后得到的值是<br>0 1<br>0 2<br>0 3<br>即auto变量var使用后释放，并再次赋值为0，而static_var不释放，一直自加到循环结束</p>
+<h3 id="题目四十三"><a href="#题目四十三" class="headerlink" title="题目四十三"></a>题目四十三</h3><p><strong>学习使用static的另一用法。</strong><br>static变量和普通变量的另一区别就是储存的位置不同，内存供用户使用可分为三个部分<br>程序区、静态存储区和动态存储区。auto变量放在动态存储区，static变量放在静态存储区。<br>还有声明变量时不要放在同一层级即同一个花括号内<br>相关代码</p>
+<pre><code>int i;
+for(i=0;i&lt;3;i++)
+{
+    int num=2; &#x2F;&#x2F;auto变量在循环内外都可运行，在内每次都为2，在外则是递增
+    printf(&quot;auto num=%d\n&quot;,num);
+    num++;
+    &#x2F;&#x2F;若取消花括号会因为变量名相同而报错
+    {
+        static int num=1;
+        printf(&quot;static num=%d\n\n&quot;,num);
+        num++;
+    }
+    &#x2F;&#x2F;从static变量声明起至花括号结束，所有相关语句均只与static变量有关
+}</code></pre>
+<p>相关代码2</p>
+<pre><code>int var=0;
+{
+    var++; &#x2F;&#x2F;此时auto变量为1
+    static int var=10;
+    var++; &#x2F;&#x2F;static变量为11
+    var++; &#x2F;&#x2F;static变量为12
+    printf(&quot;-%d\n&quot;,var); &#x2F;&#x2F;打印static变量的var
+    var++; &#x2F;&#x2F;static变量为13，但不会打印出来
+}&#x2F;&#x2F;花括号结束，此时为auto变量
+var++; &#x2F;&#x2F;auto变量为2
+printf(&quot;%d\n&quot;,var);&#x2F;&#x2F;打印auto变量的var</code></pre>
+
+<h3 id="题目六十六"><a href="#题目六十六" class="headerlink" title="题目六十六"></a>题目六十六</h3><p><strong>输入3个数a,b,c，按大小顺序输出，利用指针方法。</strong><br>运用指针分别指向a，b，c，然后像直接交换变量值一样交换指针地址就可以。<br>相关代码</p>
+<pre><code>int main()
+{
+    int n1,n2,n3;
+    scanf(&quot;%d,%d,%d&quot;,&amp;n1,&amp;n2,&amp;n3);
+    int \*p1,\*p2,\*p3;
+    p1=&amp;n1; &#x2F;&#x2F;依次把变量地址赋值给指针，注意给指针赋值时变量要带地址符&amp;，指针不用带\*号
+    p2=&amp;n2;
+    p3=&amp;n3;
+    if(n1&gt;n2)
+        trans(p1,p2);&#x2F;&#x2F;为了方便创建一个函数，此处的排序是由小到大
+    if(n2&gt;n3)
+        trans(p2,p3);
+    if(n1&gt;n3)
+        trans(p1,p3);
+    printf(&quot;%d,%d,%d\n&quot;,n1,n2,n3);
+    return 0;
+}
+
+void trans(int *p1,int *p2)
+{
+    int s;
+    s=\*p1; &#x2F;&#x2F;除声明的时侯，*p1指的都是该指针指向变量的值，例如此时\*p1指向n1，相当于s=n1
+    \*p1=\*p2;
+    \*p2=s;
+         &#x2F;&#x2F;若不加\*号，即
+    &#x2F;&#x2F;s=p1; 
+    &#x2F;&#x2F;p1=p2; 
+    &#x2F;&#x2F;p2=s;
+    &#x2F;&#x2F;意味只交换了指针变量的值，即让p1指向n2，p2指向n1，这样子在打印n1、2、3时还是输入时的值
+}</code></pre>
+
+<h3 id="题目六十七"><a href="#题目六十七" class="headerlink" title="题目六十七"></a>题目六十七</h3><p><strong>输入数组，最大的与第一个元素交换，最小的与最后一个元素交换，输出数组。</strong><br>题目意为创建一个数组，由用户自己输入，输入完成后查看数组中的值，其中最大的值与第一个元素交换，最小的值与最后一个元素交换，其他元素保持不变。<br>要求利用指针来完成。输入与输出函数没有什么好说的。关键是交换元素的时机与方法。<br>首先要定义储存最大和最小的元素的指针，以及一个检查指针。<br>第一步就是循环检查，用数组的第一个元素检查到最后一个元素，元素指针先指向第一个元素，检查指针可跳过第一个，因为max=min=p没有检查的必要。检查完成后就是交换元素，此时找到了max元素、min元素，以及p指针指向最后一个元素。此时就和先前的方法一致声明一个临时变量count来交换数值。不要直接用指针p来临时存储变量。这里要注意的是，当max指针和p指针同时指向最后一个元素时(即最后一个值最大)，改变p的值的同时也改变了max原本的变量。所以还是另外声明比较保险。<br>相关代码</p>
+<pre><code>void max_min(int array[])&#x2F;&#x2F;貌似函数返回值默认为int值时可不用声明(待检验)
+{
+    int \*max,\*min,\*p;
+    int count;
+    max=min=array;
+    for(p=array+1;p&lt;=array+5;p++)&#x2F;&#x2F;单独数组名代表该数组的首地址，+5则代表数组下标为5的元素
+    {
+        if(\*p&gt;\*max)
+            max=p;
+        else if(\*p&lt;\*min)
+            min=p;
+    }
+    count=array[5];
+    array[5]=\*min;
+    \*min=count;
+    if(max!=array+5&amp;&amp;min!=array)
+    &#x2F;&#x2F;若数组是顺序的话，只交换头尾即可，所以检查max和min是否位于第一和最后一位
+    {
+        count=array[0];
+        array[0]=\*max;
+        \*max=count;
+    }
+}</code></pre>
+
+<h3 id="题目六十八"><a href="#题目六十八" class="headerlink" title="题目六十八"></a>题目六十八</h3><p><strong>有n个整数，使其前面各数顺序向后移m个位置，最后m个数变成最前面的m个数</strong><br>例如1，2，3，4，5；m=2，结果就是4，5，1，2，3；<br>主要思路还是和上题类似，要注意指针地址的变换。函数内只能用指针交换位置，具体见注释<br>相关代码</p>
+<pre><code>int main()
+{
+    int a[5]={1,2,3,4,5};&#x2F;&#x2F;初始化数列
+    Move(a,2);&#x2F;&#x2F;用函数来完成，设定移动两位，可更改
+    for(int i=0;i&lt;5;i++)
+        printf(&quot;%d\t&quot;,a[i]);
+    printf(&quot;\n&quot;);
+    return 0;
+}
+
+void Move(int a[],int m)
+{
+    int \*R,\*S,count;&#x2F;&#x2F;声明后指针和前指针以及临时变量
+    for(int i=0;i &lt; m;i++)
+    {
+        R=a+4;&#x2F;&#x2F;将后指针放在数组的最后一项
+        count=\*R;&#x2F;&#x2F;同时将值赋给临时变量
+        for(int j=4;j&gt;0;j--)&#x2F;&#x2F;每次移动数组内部必定移动四次，要从后往前循环
+        {
+            S=a+(j-1);&#x2F;&#x2F;前指针依次向前移动
+            \*R=\*S;&#x2F;&#x2F;将前值赋给后值
+            R=S;&#x2F;&#x2F;后指针往前移，此时与前指针指向同一值
+        }
+        \*S=count;&#x2F;&#x2F;数组内交换完后把临时变量(即原最后值)赋给前指针，此时前指针指向第一值
+    }
+}</code></pre>
+
+<p>参考文档：<a href="https://www.jianshu.com/p/56d99a3049a5" target="_blank" rel="noopener">https://www.jianshu.com/p/56d99a3049a5</a><br>Sina博客原稿：<a href="http://blog.sina.com.cn/u/2292464751" target="_blank" rel="noopener">http://blog.sina.com.cn/u/2292464751</a></p>
 
                 <hr>
                 <div>
