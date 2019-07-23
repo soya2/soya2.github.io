@@ -84,7 +84,16 @@
     <div class="row">
         <div class="col-md-8 offset-md-2 ">
             <div class="post-content py-5 z-depth-3 main">
-                <h3 id="题目十一：古典问题：有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数为多少？"><a href="#题目十一：古典问题：有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数为多少？" class="headerlink" title="题目十一：古典问题：有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数为多少？"></a>题目十一：古典问题：有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数为多少？</h3><p>该题的关键在于兔子的数量符合<strong>斐波那契数列</strong>-即第n位数等于n-1位和n-2位数相加。同样是通过相互赋值的方法改变相加数的位置。<br>例如1+1=2视为x+y=z，下一次计算应该为1+2=3，则相当于把y值当成新的x，把z看成新的y<br>即x+y=z<br>    x+y=z<br>相关代码<br>    printf(“%d\n”,y<em>2); //打印出第一位数，乘二是因为一对兔子为两只<br>    for(i=0;i&lt;30;i++)<br>    {<br>        z=x+y;<br>        printf(“%d\n”,z</em>2); //注意先打印后赋值<br>        x=y;<br>        y=z;<br>    }<br>插入图片测试</p>
+                <h3 id="题目十一"><a href="#题目十一" class="headerlink" title="题目十一"></a>题目十一</h3><p>古典问题：有一对兔子，从出生后第3个月起每个月都生一对兔子，小兔子长到第三个月后每个月又生一对兔子，假如兔子都不死，问每个月的兔子总数为多少？<br>该题的关键在于兔子的数量符合<strong>斐波那契数列</strong>-即第n位数等于n-1位和n-2位数相加。同样是通过相互赋值的方法改变相加数的位置。<br>例如1+1=2视为x+y=z，下一次计算应该为1+2=3，则相当于把y值当成新的x，把z看成新的y<br>即x+y=z<br>    x+y=z<br>相关代码</p>
+<pre><code>printf(&quot;%d\n&quot;,y*2); &#x2F;&#x2F;打印出第一位数，乘二是因为一对兔子为两只
+for(i=0;i&lt;30;i++)
+{
+    z=x+y;
+    printf(&quot;%d\n&quot;,z*2); &#x2F;&#x2F;注意先打印后赋值
+    x=y;
+    y=z;
+}</code></pre>
+<p>插入图片测试</p>
 <img src="/2019/07/22/Frist-Artical/2.png" title="This is an example image">
 <p>参考文档：(<a href="https://www.jianshu.com/p/56d99a3049a5" target="_blank" rel="noopener">https://www.jianshu.com/p/56d99a3049a5</a>)<br>Sina博客原稿：(<a href="http://blog.sina.com.cn/u/2292464751" target="_blank" rel="noopener">http://blog.sina.com.cn/u/2292464751</a>)<br>测试结束</p>
 
