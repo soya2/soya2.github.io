@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="76x76" href="/Title_Logo.png">
+    <link rel="icon" type="image/png" href="/Title_Logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="联系唯一邮箱：soya-kelaos@outlook.com">
+    <meta name="author" content="Soya-Kelaos">
+    <meta name="keywords" content>
+    <title>Python_Note ~ Silence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.7.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.7.4/css/mdb.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1067060_vr10bjtg3us.css">
+    
+        <link rel="stylesheet" href="/css/Prettify/tomorrow-night-eighties.min.css">
+    
+</head>
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+<div class="container">
+    <a class="navbar-brand" href="/"><strong>Silence</strong></a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto text-center">
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/archives/">Archives</a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="/about/">About</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+</nav>
+    <div class="view intro-2" style='background: url("/Blog_Wallpaper.jpg")no-repeat center center;background-size: cover;'>
+    <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+        <div class="container text-center white-text wow fadeInUp">
+            <p class="h2">Python_Note</p>
+            <br>
+            
+            <p>Tuesday, July 23rd 2019, 5:02 pm</p>
+            
+        </div>
+        </div>
+    </div>
+    </div>
+  </header>
+
+  <main>
+  
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 ">
+            <div class="post-content py-5 z-depth-3 main">
+                <h3 id="与C语言的一些区别"><a href="#与C语言的一些区别" class="headerlink" title="与C语言的一些区别"></a>与C语言的一些区别</h3><p>代码<strong>行首</strong>不要随意插入空格，空格在python中具有缩进含义<br>    缩进在python中表示的是程序的分割<br>    C中是用大括号{}来分割程序,如:<br>    <pre><code>for(int i=0;i&lt;=10;i++)
+{
+   printf(&quot;Hello World!\n&quot;);
+   printf(&quot;%d\n&quot;,1+2);
+}</code></pre><br>    而python中仅仅用缩进表示,如:<br>    <pre><code>for i in range(10)
+    print(&quot;Hello World!\n&quot;)
+ 	print(i)
+#若代码为,如:
+for i in range(10)
+    print(&quot;Hello World!\n&quot;)
+ print(i)
+ </code></pre><br>则此时print(i)就不属于for循环中的代码<br>以及一行命令结束后不必用分号声明结束<br>同样是中文字符会报错</p>
+<p>###注释<br>-#为行注释<br>-‘’’此为<br>段注释<br>以三个分号来声明<br>‘’’</p>
+<p>###关于变量<br>变量在声明和定义时不用有类似于int char等数据类型声明，直接将对象的地址赋值给变量如a = 1<br>python中可以删除变量，进行<br>    del a<br>的操作后将a从栈中删除，变量是存储在栈中的，而对象”1”则是存储在堆中的，将a删除后对象”1”仍然存在，但没人使用后会被垃圾回收器删除(删除的实际时间待补充)<br>和c相同可以采用链式赋值法<br>    如 a=b=22<br>这样a和b的值都是22<br>注意，声明变量时，值为[-5，256]区间内的值会被python解释器缓存起来，这样不论时什么变量指向这个对象，都是同一个对象，并不是生成一个新的对象。可用is()  is not()函数验证，这两个函数分别判断两个标识符是否为一个对象和是否不是为一个对象<br>也可采用解包赋值，形如<br>    a,b = b,a<br>意味着a和b的变量互换了，不必在代码中加一个中间变量temp参与互换<br>同时注意，<strong>Python不支持常量</strong></p>
+<p>###运算符<br>+、-、<em>和c语言相同<br>但由于Python不声明数据类型，所以在除法上有区别<br>如a = 2/3采用浮点计算，就是会将得出的结果保留小数，和float数据类型一样，此时a=0.66..67<br>若采用a = 2//3就是采用整型计算，意味着不保留小数，此时a=0<br>%同样为取模(余数)，但注意+、-、</em>的两者分别是整型和浮点型时默认为浮点型数据计算<br>双星号为幂</p>
+<pre><code>a = 2**3 #**</code></pre>
+<p>就是2的三次方，此时a=8<br>关于科学计数法如3.14就表示为”314E-2”，意为314×10^(-2)<br>注意双斜杠’//‘在C语言中表示注释，在Python中表示整型除法计算</p>
+<p>###字符串<br>python中没有单个字符的概念，只有字符串或者是单个字符的字符串<br>在声明字符串的时候既可以用单引号，也可用双引号<br>形如a = “abc”  a = ‘abc’  都是合法的，这样子可以对一个字符串中同时出现单引号和双引号的情况作临时的解决，并且字符串中支持换行，只要连续三个单引号或双引号就可以在中间换行。<br>例如a = ‘’’abc<br>def<br>“ghi”’’’<br>合法，中间有双引号时也不会冲突，如果还有冲突，就使用转移字符/‘和/“来解决<br>对于字符串也可以使用+、-、<em>来操作，但要注意，+、-时两者必须同为字符串</em><br>在使用print()函数时可采用加一个end来改变要增加的字符(默认为\n)<br>例如 print(“abc”,end=”\t”)<br>在python中使用input()函数来输入</p>
+<pre><code>&gt;&gt;&gt; name=input(&quot;please input your name:&quot;)
+please input your name:soya
+&gt;&gt;&gt; print(&quot;Hello，&quot;+name)
+Hello，soya</code></pre>
+<p>同样可以利用str()函数把数字、布尔值等转为字符串<br>类似于数组的下标，字符串也有索引，和下标相同，正向时是从0开始，但Python还可以使用反向搜索</p>
+<pre><code>&gt;&gt;&gt; c = &quot;asdfbd&quot;
+&gt;&gt;&gt; c[0]
+&#39;a&#39;
+&gt;&gt;&gt; c[-1]   #从-1开始倒数就是从最后一个字符到第一个字符，注意不是0开始
+&#39;d&#39;
+字符串替换
+&gt;&gt;&gt; c.replace(&quot;a&quot;,&quot;5&quot;)
+&#39;5sdfbd&#39;
+&gt;&gt;&gt; c
+&#39;asdfbd&#39;    #这里意为着是创建了一个新的对象，但如果没有指向一个变量那就不会被引用
+&gt;&gt;&gt; c=c.replace(&quot;a&quot;,&quot;5&quot;)    #此为利用原来的变量重新指向新创建的字符串
+&gt;&gt;&gt; c
+&#39;5sdfbd&#39;
+提取字符串中的部分字符
+&gt;&gt;&gt; c[1:5]    #意为着从下标1&#39;s&#39;开始提取到下标5&#39;d&#39;之间的字符，注意不包含第五个(超出)
+&#39;sdfb&#39;
+&gt;&gt;&gt; c[:]    #提取全部字符
+&#39;5sdfbd&#39;
+&gt;&gt;&gt; c[0:5:2]    #第三个参数表示步长，2表示隔一个提取一个(每两个提取一个)
+&#39;5db&#39;
+&gt;&gt;&gt; c[::-1]    #表示每隔-1个提取一个(可以理解为每隔一个提取一个，但是是倒序提取)
+&#39;dbfds5&#39;</code></pre>
+
+<p>###列表、元组、字典<br>三者的创建有一些区别</p>
+<pre><code>&gt;&gt;&gt; a = [ 10, 20, 30]  #列表方括号，或以list()创建
+&gt;&gt;&gt; b = ( 10, 20, 30)  #元组小括号，或以tuple()创建
+&gt;&gt;&gt; c = { &quot;one&quot;:10, &quot;two&quot;:20, &quot;three&quot;:30}  #字典花括号，或以dict()创建</code></pre>
+<p>三者的操作集合在需要使用的时候再查询，不必背诵<br>变量段落中的解包赋值对它们同样有效<br>三者都可以通过推导式来生成，即在声明的时候加入循环，运算和筛选，例</p>
+<pre><code>y = [x*2 for x in range(1,5) if x%2==0]   #意为生成一个1-4的列表，随后筛选出能被2整除的数，最后乘2得出最后的列表
+&gt;&gt;&gt; [4,8]	#*</code></pre>
+
+<p>###循环<br>while()和for()循环都和C类似，有几个新特性值得记下来。<br>python中循环也可以加else判断，条件是循环没有被break中断的就执行else语句(即正常结束循环就执行)<br>for循环中可以使用zip()函数达到几个列表并列循环的效果<br>例如</p>
+<pre><code>a = [&quot;A&quot;,&quot;B&quot;,&quot;C&quot;]
+b = [1,2,3]
+c = [&quot;!&quot;,&quot;@&quot;]
+
+for a1,b1,c1 in zip(a,b,c):    #前面的名字和列表名字不能相同，与变量i同理
+    print(&quot;{0},{1},{2}&quot;.format(a1,b1,c1))
+
+&gt;&gt;&gt; 
+A,1,!
+B,2,@</code></pre>
+<p>需要理解的是for在python中不仅仅是循环，而是更接近于“遍历”，所以不必局限于循环次数，而是根据列表来进行遍历，这里意味着同时对a，b，c进行遍历。要注意，当次数不相同时按最短列表遍历次数，如例子中a，和b的长度都是3，c是2，就循环两次</p>
+<p>###函数<br>与C相同，函数的返回值只能返回一个。但不同的是，python可以返回一个对象，这意味着能把多个值放在列表中返回，以达到返回多个值的效果(但本质还是只返回一个对象)</p>
+
+                <hr>
+                <div>
+                    <p>
+                         
+                        <span class="badge badge-light">#&nbsp;Python</span>
+                        &nbsp;
+                        
+                    </p>
+                </div>
+                <br>
+                
+                    <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+                
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-2">
+            
+  <div id="toc" class="py-5">
+    <p class="h6"><i class="iconfont icon-toc" style="vertical-align:middle"></i> Toc:</p> 
+    <div id="tocbot"></div>
+  </div>
+
+        </div>
+    </div>        
+</div>
+
+<br><br><br>
+
+<!-- Comments -->
+<div class="comments" id="comments">
+ 
+</div>
+  
+  </main>
+
+<footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank"><b>HEXO</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/0x2e/Material-T" target="_blank"> <b>Material-T</b></a>
+  </div>
+</footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.7.4/js/jquery-3.3.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.7.4/js/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.7.4/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.7.4/js/mdb.min.js"></script>
+  <script src="/js/main.js"></script>
+  
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    
+    <script src="/js/post.js"></script>
+    
+      <script src="/js/plugins/prettify.js"></script>
+      <script>
+          $(document).ready(function(){
+              $('pre').addClass('prettyprint linenums');
+              prettyPrint();
+          })
+      </script>
+    
+  
+</body>
+</html>
