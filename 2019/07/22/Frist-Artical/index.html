@@ -317,7 +317,7 @@ float dcall(float (*fp)(),int n)
     return(s);
 }</code></pre>
 
-<h3 id="题目一百"><a href="#题目一百" class="headerlink" title="题目一百"></a>题目一百</h3><p><strong><em>有五个学生，每个学生有3门课的成绩，从键盘输入以上数据（包括学生号，姓名，三门课成绩），计算出平均成绩，况原有的数据和计算出的平均分数存放在磁盘文件”stud”中。</em></strong><br>难度不大，注意输入数据存储到结构体中的时候，即使是用指针指向的数据(即P-&gt;num)的形式，也要加地址符&amp;，因为这里的num依然是变量，而不是地址。<br>例如数组名本身代表数组的首地址，形如声明为</p>
+<h3 id="题目一百"><a href="#题目一百" class="headerlink" title="题目一百"></a>题目一百</h3><p><strong>有五个学生，每个学生有3门课的成绩，从键盘输入以上数据（包括学生号，姓名，三门课成绩），计算出平均成绩，况原有的数据和计算出的平均分数存放在磁盘文件”stud”中。</strong><br>难度不大，注意输入数据存储到结构体中的时候，即使是用指针指向的数据(即P-&gt;num)的形式，也要加地址符&amp;，因为这里的num依然是变量，而不是地址。<br>例如数组名本身代表数组的首地址，形如声明为</p>
 <pre><code>char a[10];
 scanf(&quot;%c&quot;,a);&#x2F;&#x2F;合法
 scanf(&quot;%c&quot;,&amp;a[0]);&#x2F;&#x2F;合法
@@ -367,6 +367,35 @@ int main()
     return 0;
 }*&#x2F;&#x2F;无意义星号，在Markdown代表字符标签，与冲突程序语言冲突</code></pre>
 
+<h3 id="关于函数的实参和形参，以及指针作为参数时的情况"><a href="#关于函数的实参和形参，以及指针作为参数时的情况" class="headerlink" title="关于函数的实参和形参，以及指针作为参数时的情况"></a>关于函数的实参和形参，以及指针作为参数时的情况</h3><p>在声明一个函数时<br>例如：</p>
+<pre><code>int Function(int a, int b);</code></pre>
+<p>此时function函数中的a和b为形参</p>
+<p>在主函数中</p>
+<pre><code>int main()
+{
+    int Ra,Rb;
+    Ra=1;
+    Rb=2;
+    Function(Ra,Rb);
+    return 0;
+}</code></pre>
+<p>此时主函数中的Ra和Rb为实参<br>需要注意的是形参在函数中的运算不会影响实参的值</p>
+<p>而指针作为参数的时候有点特殊，如果直接写成</p>
+<pre><code>int Function(int *a, int b);</code></pre>
+<p>主函数中</p>
+<pre><code>int main()
+{
+    int *Ra;
+    int Rb;
+    Rb=2;
+    Function(Ra,Rb);
+    return 0;
+}*&#x2F;&#x2F;无意义星号，在Markdown代表字符标签，与冲突程序语言冲突</code></pre>
+<p>此时指针Ra同样不会因为函数中的指针a变化而变化。</p>
+<blockquote><p>在初始化操作前，头指针参数head没有具体的地址值，在初始化操作前，头指针参数head才得到了具体的地址值，而这个地址值要返回给调用函数，所以，此时头指针参数head要设计成指针的指针类型。如果此时头指针参数head设计成指针类型，那么调用函数将无法得到在初始化函数中被赋值的头指针参数head的数值。</p>
+<footer><strong>朱战立 数据结构—使用C语言</strong></footer></blockquote>
+
+<p>总结就是作为参数形参不能影响实参，但是只要将指针的地址作为参数直接修改地址就可以影响主函数中指针参数的所指向的地址。</p>
 <p>参考文档：<a href="https://www.jianshu.com/p/56d99a3049a5" target="_blank" rel="noopener">https://www.jianshu.com/p/56d99a3049a5</a><br>Sina博客原稿：<a href="http://blog.sina.com.cn/u/2292464751" target="_blank" rel="noopener">http://blog.sina.com.cn/u/2292464751</a></p>
 
                 <hr>
