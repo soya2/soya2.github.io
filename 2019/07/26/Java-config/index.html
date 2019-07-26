@@ -84,7 +84,7 @@
     <div class="row">
         <div class="col-md-8 offset-md-2 ">
             <div class="post-content py-5 z-depth-3 main">
-                <h3 id="必备下载"><a href="#必备下载" class="headerlink" title="必备下载"></a>必备下载</h3><p>首先要先下载<strong>JDK</strong>，它是Java开发的软件工具包，是必要的文件，请先下载这个：<br>Java SE Downloads: (<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a>)<br>点击网页中央下方有”Java Platform (JDK) 12”描述的的方块图形，然后在下方的这个区域点击涂黄的部分，然后下载<br><strong>*”Windows 158.63 MB jdk-12.0.2_windows-x64_bin.exe”*</strong>或者<br><strong>*”Windows 179.57 MB jdk-12.0.2_windows-x64_bin.zip”*</strong>中的其中一个,随后安装即可。</p>
+                <h3 id="必备下载"><a href="#必备下载" class="headerlink" title="必备下载"></a>必备下载</h3><p>首先要先下载<strong>JDK</strong>，它是Java开发的软件工具包，是必要的文件，请先下载这个：<br>Java SE Downloads: (<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/index.html</a>)<br>点击网页中央下方有”Java Platform (JDK) 12”描述的的方块图形，然后在下方的这个区域点击涂黄的部分，然后下载<br><strong>*”Windows 158.63 MB jdk-12.0.2_windows-x64_bin.exe”*</strong><br>或者<br><strong>*”Windows 179.57 MB jdk-12.0.2_windows-x64_bin.zip”*</strong>中的其中一个,随后安装即可。</p>
 <img src="/2019/07/26/Java-config/JDK1.jpg">
 
 <h3 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h3><p>按操作依次打开窗口；<br>控制面板中的系统，然后点击左侧涂色的<em>高级系统设置</em></p>
@@ -93,13 +93,14 @@
 <img src="/2019/07/26/Java-config/CON2.jpg">
 <p>然后打开的窗口分为用户变量和系统变量上下两个部分，首先对系统变量部分进行操作；首先查看变量中是否有名为<strong>*”JAVA_HOME”*</strong>的变量，如果没有就点击新建按钮，若有请点击编辑按钮。变量名填写为<strong>*”JAVA_HOME”*</strong>，变量值填写为<em>你安装JDK*</em>文件夹*<em>的位置</em>，点击确定。</p>
 <img src="/2019/07/26/Java-config/CON3.jpg">
-<p>之后对用户变量进行操作，选择<strong><em>Path变量</em></strong>后点击编辑，新建两个变量值<strong><em>%JAVA_HOME%\bin</em></strong>和<strong><em>%JAVA_HOME%\jre\bin</em></strong>，点击确定。</p>
+<p>之后对用户变量进行操作，选择<strong><em>Path变量</em></strong>后点击编辑，新建两个变量值<br><strong><em>%JAVA_HOME%\bin</em></strong><br><strong><em>%JAVA_HOME%\jre\bin</em></strong><br>点击确定。</p>
 <img src="/2019/07/26/Java-config/CON4.jpg">
 
 <p>变量设置完成后，启动CMD直接输入<em>java -version<em>或者</em>java*均有反应，而不是</em>“‘java’ 不是内部或外部命令，也不是可运行的程序”*即可。<br>正确配置后的反应为</p>
 <img src="/2019/07/26/Java-config/CMD1.jpg">
 <img src="/2019/07/26/Java-config/CMD2.jpg">
 
+<p>到此为止，必备的操作都已经完成。</p>
 
                 <hr>
                 <div>
