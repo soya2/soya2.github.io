@@ -1,0 +1,27 @@
+[[entries]]
+title = "Language"
+entries = [
+  { title = "English", url = "/en/" },
+  { title = "中文", url = "/zh/" }
+]
+
+[[entries]]
+title = "info"
+  
+  [[entries.entries]]
+  title = "to the theme"
+  url = "https://github.com/hanwenguo/hugo-theme-nostyleplease"
+
+
+[[entries]]
+title = "all posts"
+
+  [entries.post_list]
+  limit = 5
+  show_more = true
+  show_more_text = "See archive..."
+  show_more_url = "posts"
+
+[[entries]]
+title = "rss"
+url = "index.xml"

@@ -1,0 +1,16 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = "Soya's blog"
+theme = 'nostyleplease'
+
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    weight = 1
+
+  [languages.zh]
+    languageName = "中文"
+    weight = 2
