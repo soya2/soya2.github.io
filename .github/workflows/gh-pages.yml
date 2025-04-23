@@ -2,7 +2,7 @@ name: Deploy Hugo site to GitHub Pages
 
 on:
   push:
-    branches: [main]  # 如果你的主分支是 master，则改成 master
+    branches: [master]
 
 jobs:
   deploy:
@@ -25,4 +25,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          publish_branch: gh-pages  # 这是部署分支，GitHub Pages 将用它
+          publish_branch: gh-pages
